@@ -2,7 +2,7 @@
  * Represents a list of Nodes. 
  */
 public class LinkedList {
-	
+
 	private Node first; // pointer to the first element of this list
 	private Node last;  // pointer to the last element of this list
 	private int size;   // number of elements in this list
@@ -54,8 +54,11 @@ public class LinkedList {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
 		}
-		//// Replace the following statement with your code
-		return null;
+		Node n = this.first;
+		for (int i = 0; i < index; i++) {
+			n = n.next;
+		}
+		return n;
 	}
 	
 	/**
@@ -78,7 +81,27 @@ public class LinkedList {
 	 *         if index is negative or greater than the list's size
 	 */
 	public void add(int index, MemoryBlock block) {
-		//// Write your code here
+		Node n = new Node(block);
+		if (index < 0 || index > size) {
+			throw new IllegalArgumentException(
+					"index must be between 0 and size");
+		}
+		if (index == 0) {
+			n.next = this.first;
+			size ++;
+		}
+		if (index == size) {
+			this.last.next = n;
+			size ++;
+		}
+		Node temp1 = this.first;
+		for (int i = 0; i < index - 1; i ++) {
+			temp1 = temp1.next;
+		}
+		Node temp2 = temp1.next;
+		temp1.next = n;
+		n.next = temp2;
+		size ++;
 	}
 
 	/**
@@ -89,7 +112,9 @@ public class LinkedList {
 	 *        the given memory block
 	 */
 	public void addLast(MemoryBlock block) {
-		//// Write your code here
+		Node n = new Node(block);
+		this.last.next = n;
+		size ++;
 	}
 	
 	/**
@@ -100,7 +125,9 @@ public class LinkedList {
 	 *        the given memory block
 	 */
 	public void addFirst(MemoryBlock block) {
-		//// Write your code here
+		Node n = new Node(block);
+		n.next = this.first;
+		size ++;
 	}
 
 	/**

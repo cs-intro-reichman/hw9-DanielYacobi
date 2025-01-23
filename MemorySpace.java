@@ -81,7 +81,7 @@ public class MemorySpace {
 	public String toString() {
 		return freeList.toString() + "\n" + allocatedList.toString();		
 	}
-	
+
 	/**
 	 * Performs defragmantation of this memory space.
 	 * Normally, called by malloc, when it fails to find a memory block of the requested size.
