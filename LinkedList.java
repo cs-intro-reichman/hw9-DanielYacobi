@@ -221,6 +221,10 @@ public class LinkedList {
 	 *         if index is negative or greater than or equal to size
 	 */
 	public void remove(int index) {
+		if (index < 0 || index >= size) {
+			throw new IllegalArgumentException(
+					"index must be between 0 and size");
+		}
 		Node temp = getNode(index);
 		remove(temp);
 	}
@@ -233,7 +237,20 @@ public class LinkedList {
 	 *         if the given memory block is not in this list
 	 */
 	public void remove(MemoryBlock block) {
-		//// Write your code here
+		Node temp = first;
+		boolean isFound = false;
+		for (int i = 0; i < size; i++) {
+			if (temp.block.equals(block)) {
+				remove(temp);
+				isFound = true;
+				break;
+			}
+			temp = temp.next;
+		}
+		if (!isFound) {
+			throw new IllegalArgumentException(
+					"the given memory block is not in this list");
+		}
 	}	
 
 	/**
