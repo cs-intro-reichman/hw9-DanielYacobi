@@ -182,8 +182,11 @@ public class LinkedList {
 	 *        the node that will be removed from this list
 	 */
 	public void remove(Node node) {
+		if (node == null) {
+			throw new IllegalArgumentException(
+					"NullPointerException!");
+		}
 		if (this.first != null && node != null) {
-			
 			if (node == first) {
 				this.first = first.next;
 				if (first == null) { 
@@ -249,7 +252,7 @@ public class LinkedList {
 		}
 		if (!isFound) {
 			throw new IllegalArgumentException(
-					"the given memory block is not in this list");
+					"index must be between 0 and size");
 		}
 	}	
 
