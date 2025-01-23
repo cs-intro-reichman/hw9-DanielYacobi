@@ -112,9 +112,16 @@ public class LinkedList {
 	 *        the given memory block
 	 */
 	public void addLast(MemoryBlock block) {
-		/*Node n = new Node(block);
-		this.last.next = n;
-		size ++;*/
+		Node n = new Node(block);
+		if (first == null) {
+			this.first = n;
+			this.last = n;
+		}
+		else {
+			this.last.next = n;
+			this.last = n;
+		}
+		size ++;
 	}
 	
 	/**
@@ -126,16 +133,15 @@ public class LinkedList {
 	 */
 	public void addFirst(MemoryBlock block) {
 		Node n = new Node(block);
-		/*n.next = this.first;
-		size ++;*/
 		if (this.first == null) {
 			this.first = n;
-			size ++;
+			this.last = n;
 		}
 		else {
 			n.next = this.first;
-			size ++;
+			this.first = n;
 		}
+		size ++;
 	}
 
 	/**
