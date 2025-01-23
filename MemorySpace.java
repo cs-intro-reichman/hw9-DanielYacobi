@@ -90,7 +90,14 @@ public class MemorySpace {
 	 *            the starting address of the block to freeList
 	 */
 	public void free(int address) {
-		//// Write your code here
+		Node temp = allocatedList.getFirst();
+		for (int i = 0; i < allocatedList.getSize(); i++) {
+			if (temp.block.baseAddress == address) {
+				allocatedList.remove(temp);
+				freeList.addLast(temp.block);
+			}
+			temp = temp.next;
+		}
 	}
 	
 	/**
