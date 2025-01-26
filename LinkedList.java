@@ -55,7 +55,7 @@ public class LinkedList {
 					"index must be between 0 and size");
 		}
 		Node n = first;
-		for (int i = 0; i < index; i++) {
+		for (int i = 0; i < index; i++) { //until reaching given index
 			n = n.next;
 		}
 		return n;
@@ -85,10 +85,10 @@ public class LinkedList {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
 		}
-		if (index == 0) {
+		if (index == 0) { //special case
 			addFirst(block);
 		}
-		else if (index == size) {
+		else if (index == size) { //special case
 			addLast(block);
 		}
 		else {
@@ -203,7 +203,7 @@ public class LinkedList {
 				}
 				this.last = temp; 
 			}
-			else {
+			else { //node somwhere in the middle
 				Node temp = first;
 				while (temp != null && temp.next != node) {
 					temp = temp.next;
@@ -267,7 +267,13 @@ public class LinkedList {
 	 * A textual representation of this list, for debugging.
 	 */
 	public String toString() {
-		//// Replace the following statement with your code
-		return "";
+		String output = "";
+		Node n = this.first;
+		while (n != null) {
+			output += n.block.toString() + " ";
+			n = n.next;
+		}
+		
+		return output;
 	}
 }
